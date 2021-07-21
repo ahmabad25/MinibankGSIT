@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{index}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINI Bank GSIT</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<strong>Form Tabungan</strong>
+							</div>
+							<div class="card-body card-block">
+								<form method="post"  th:action="@{add}" th:object="${tabungan}" class="form-horizontal">
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label class=" form-control-label"><b>ID Tabungan</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${newId}"></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>No Rekening</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${newRek}" ></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>PIN</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="password" id="pin" name="pin" th:field="*{pin}" class="form-control" maxlength="6" pattern="[0-9]{6}" required>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>Tanggal Pembukaan</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${tglBuka}"></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>Nominal</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="nominal" name="nominal" th:field="*{nominal}" class="form-control" required>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>ID Transaksi Masuk</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${idmasuk}" ></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>ID Histori</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${idhistori}" ></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>Pemilik</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<select class="form-control" th:field="*{idNasabah}">
+												<option th:each="nasabah : ${daftarNasabah}" th:text="${nasabah.firstName}+' '+${nasabah.lastName}" th:value="${nasabah.idNasabah}"></option>
+											</select>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>Status</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<select class="form-control" th:field="*{status}">
+												<option value="AKTIF">AKTIF</option>
+											</select>
+										</div>
+									</div>
+										<input type="hidden" name="idTransaksiMasuk" th:value="${idmasuk}" />
+										<input type="hidden" name="idHistori" th:value="${idhistori}" />
+										<input type="hidden" name="idTabungan" th:value="${newId}" /> 
+										<input type="hidden" name="noRekening" th:value="${newRek}" />
+										<input type="hidden" name="tanggalPembukaan" th:value="${tglBuka}" />
+										
+										<input type="submit" class="btn btn-success" value="Tambah" />
+									<td><a href="/tabungan" class="btn btn-info" role="button">Kembali</a></td>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="clearfix"></div>
+
+</body>
+</html>

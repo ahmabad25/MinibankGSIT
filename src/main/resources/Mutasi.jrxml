@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Mutasi" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="template.engine" value="tabular_template"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="pkwt2"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EEEFF0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#D8D8D8"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="tableDataset" uuid="01503e66-860b-4583-a722-8951a15e93da">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PKWTGSIT"/>
+		<queryString language="SQL">
+			<![CDATA[select td.tanggal_transaksi, td.saldo_masuk, td.saldo_keluar,td.total_saldo,tk.pengirim, tk.penerima , td.berita_transfer 
+from tabungan_detail td   
+FULL OUTER JOIN transaksi_keluar tk
+on td.tanggal_transaksi= tk.tanggal_keluar
+where to_char (td.tanggal_transaksi , 'dd/mm/yyyy')= to_char(sysdate,'dd/mm/yyyy')
+order by td.tanggal_transaksi desc]]>
+		</queryString>
+		<field name="TANGGAL_TRANSAKSI" class="java.sql.Timestamp">
+			<property name="com.jaspersoft.studio.field.label" value="TANGGAL_TRANSAKSI"/>
+		</field>
+		<field name="SALDO_MASUK" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SALDO_MASUK"/>
+		</field>
+		<field name="SALDO_KELUAR" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="SALDO_KELUAR"/>
+		</field>
+		<field name="TOTAL_SALDO" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TOTAL_SALDO"/>
+		</field>
+		<field name="PENGIRIM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="PENGIRIM"/>
+		</field>
+		<field name="PENERIMA" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="PENERIMA"/>
+		</field>
+		<field name="BERITA_TRANSFER" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="BERITA_TRANSFER"/>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="160" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="80" width="556" height="1" uuid="9d2f0960-821c-48d2-a7c1-222c58a647e6">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="415" y="10" width="50" height="20" uuid="ab5968f5-72e5-4669-ab26-0fc3b1e64082"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date      : ]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="465" y="10" width="84" height="20" uuid="2e060f83-e727-4f60-ae9d-9c2d35b38842"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="465" y="30" width="84" height="20" uuid="d10df1b3-08f8-492c-8d3d-e3e0aabc4aee"/>
+				<textFieldExpression><![CDATA["MTS0001"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="30" width="65" height="20" uuid="40a1cbfd-8eba-4052-b044-86c35e9a671a"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Mutasi#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="310" height="60" uuid="6fda3a5d-aaac-43a4-8273-a168f80be436">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="37" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINI BANK GSIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-7" y="100" width="555" height="25" uuid="7197db09-f4a0-477e-ac7d-080cecc79c6f">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN MUTASI PER HARI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="150" y="125" width="250" height="1" uuid="e8a62fd8-bcdb-4901-9ed8-ccdd806e23be"/>
+			</line>
+			<image>
+				<reportElement x="10" y="15" width="50" height="50" uuid="fdece41c-0079-451f-86cd-e254242f8b65"/>
+				<imageExpression><![CDATA["logo1.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<summary>
+		<band height="293" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="263" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="90" uuid="1aafa7ce-1d79-46a8-8530-4e1c541d7e95"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tableDataset" uuid="4323142d-9f08-4a2f-b7d5-c43c52323a22">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="79" uuid="df47a5c7-d70f-4c7a-b5db-0f4b8a7374e7">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="59bb7fbc-010a-4a6d-9792-4a159481af44"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TANGGAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="bb0522eb-3b55-4f3c-a774-bbe74c5108bf"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TANGGAL_TRANSAKSI}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="4a605c8a-c6bf-4180-ad57-4339012ecefa">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="7cf3678e-7a8b-43df-91fd-1b5f8e158aff"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SALDO MASUK]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="822c2022-0e16-4cfe-b2ab-8a9ab5ff3a69"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SALDO_MASUK}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="4bc0305e-44da-42a6-82aa-ee86761e6810">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="76028875-79ea-410a-a737-63b7ec865004"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SALDO KELUAR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="5e926dc5-2744-406e-9663-643784e27d85"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SALDO_KELUAR}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="45f2dea4-07c0-4466-9833-f0a414683f4f">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="6f6b3ea4-ba89-4324-9a45-69b9f45f0ced"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL SALDO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="2368812d-a8b8-4c8d-9fad-8a86efae5c52"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TOTAL_SALDO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="91d33899-9ab1-470c-bcec-71436b2d8b31">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="3f7a48da-7505-46a5-8128-fcd741fedaaf"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[PENGIRIM]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="1efbce49-4cfa-4f0f-aceb-60b07a32f918"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{PENGIRIM}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="64a35149-5b7f-4e30-9290-6fbd16747d42">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="6d81cc96-a740-4562-b1a7-684da0980417"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[PENERIMA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="6d87838f-0e3a-46c1-bf67-b1ce0c4c54e0"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{PENERIMA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="77ce3992-0979-4234-9630-ae7dbee31464">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement key="" style="Column header" x="0" y="0" width="79" height="30" forecolor="#000000" uuid="6d86ff73-1ccb-424d-997c-a37ef62f09f9"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[BERITA TRANSFER]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="30">
+							<textField>
+								<reportElement style="Detail" x="0" y="0" width="79" height="30" uuid="06808207-5e19-4eab-b242-92be5eaf1db8"/>
+								<box leftPadding="2">
+									<pen lineWidth="1.0" lineStyle="Double"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{BERITA_TRANSFER}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement positionType="Float" x="280" y="120" width="261" height="81" uuid="49315433-1fdf-483b-8782-59906c3266f8"/>
+				<box>
+					<topPen lineWidth="1.1" lineStyle="Dashed"/>
+					<leftPen lineWidth="1.1" lineStyle="Dashed"/>
+					<bottomPen lineWidth="1.1" lineStyle="Dashed"/>
+					<rightPen lineWidth="1.1" lineStyle="Dashed"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="291" y="169" width="210" height="1" uuid="e943478d-952b-4ac9-b07e-15016031f873"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="281" y="180" width="100" height="20" uuid="7abe5793-0cde-47b9-bb3a-d324fc00a436"/>
+				<text><![CDATA[*Paraf/Cap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="291" y="150" width="80" height="20" uuid="f6133fa5-3c03-43e8-a1d0-5ea85a523e21"/>
+				<text><![CDATA[Nama :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

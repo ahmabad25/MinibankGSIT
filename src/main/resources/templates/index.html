@@ -1,0 +1,188 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MINI Bank GSIT</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="/images/logo1.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default" th:object="${id}">
+   
+            <div id="main-menu" class="main-menu collapse navbar-collapse" th:switch="*{idJabatan}">
+                
+                <!-- CSO'S SIDE BAR -->
+                <ul class="nav navbar-nav" th:case="'10'">
+                    <li>
+                        <a href="/Home"><i class="menu-icon fa fa-laptop"></i>Beranda </a>
+                    </li>
+                    <li class="menu-title">Data Nasabah</li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-user"></i>Nasabah</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/nasabah">&nbsp;Daftar Nasabah</a></li>
+                          <li><i class="ti-write"></i><a href="/nasabah/tambah">&nbsp;Tambah Nasabah</a></li>
+                        </ul> 
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-agenda"></i>Tabungan</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/tabungan">&nbsp;Daftar Tabungan</a></li>
+                          <li><i class="ti-write"></i><a href="/tabungan/add">&nbsp;Tambah Tabungan</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon ti-mobile"></i>Mobile Banking</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/klien">&nbsp;Daftar Akun</a></li>
+                          <li><i class="ti-write"></i><a href="/klien/add">&nbsp;Tambah Akun</a></li>
+                        </ul> 
+                    </li>
+                    <li class="menu-title">Data Transaksi</li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Setor</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/transaksi/data/setor">&nbsp;Daftar Setoran</a></li>
+                        </ul>
+                    </li>
+                     <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/transaksi/data/transfer">&nbsp;Daftar Transfer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <!-- TELLER'S SIDE BAR -->
+                <ul class="nav navbar-nav" th:case="'20'">
+                    <li>
+                        <a href="/Home"><i class="menu-icon fa fa-laptop"></i>Beranda </a>
+                    </li>
+                    <li class="menu-title">Data Transaksi</li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Setor</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/transaksi/data/setor">Daftar Setoran Nasabah</a></li>
+                          <li><i class="ti-write"></i><a href="/transaksi/setor">Tambah Setoran Nasabah</a></li>
+                        </ul>
+                    </li>
+                     <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-exchange"></i>Transfer</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/transaksi/data/transfer">Daftar Transfer Nasabah</a></li>
+                          <li><i class="ti-write"></i><a href="/transaksi/transfer">Tambah Tambah Transfer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <!-- MANAGER'S SIDE BAR -->
+                <ul class="nav navbar-nav" th:case="'30'">
+                    <li>
+                        <a href="/Home"><i class="menu-icon fa fa-laptop"></i>Beranda </a>
+                    </li>
+                    <li class="menu-title">Data Pegawai</li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Pegawai</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/pegawai">&nbsp;Daftar Pegawai</a></li>
+                          <li><i class="ti-write"></i><a href="/pegawai/insert">&nbsp;Tambah Pegawai</a></li>
+                        </ul> 
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-sitemap"></i>Jabatan</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/jabatan">&nbsp;Daftar Jabatan</a></li>
+                          <li><i class="ti-write"></i><a href="/jabatan/insert">&nbsp;Tambah Jabatan</a></li>
+                        </ul> 
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>User</a>
+                        <ul class="sub-menu children dropdown-menu">
+                          <li><i class="fa fa-table"></i><a href="/UserPegawai">&nbsp;Daftar User</a></li>
+                          <li><i class="ti-write"></i><a href="/UserPegawai/add">&nbsp;Tambah User</a></li>
+                        </ul> 
+                    </li>
+                </ul>
+            
+            </div>
+        </nav>
+    </aside>
+
+
+
+    <div id="right-panel" class="right-panel">
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+					<a class="navbar-brand"><img src="/images/gsit.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="/images/icon/cs.png" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="/profile"><i class="fa fa-user"></i>My Profile</a>
+
+                            <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+<th:block layout:fragment="breadcrumbs"/>
+
+<th:block layout:fragment="content"/>
+
+<div class="clearfix"></div>
+
+<footer class="site-footer">
+    <div class="footer-inner bg-white">
+        <div class="row">
+            <div class="col-sm-6">
+                Copyright &copy; 2020 GSIT PKWT Batch 2
+            </div>
+            <div class="col-sm-6 text-right">
+                Designed with Love
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/jquery.knob.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

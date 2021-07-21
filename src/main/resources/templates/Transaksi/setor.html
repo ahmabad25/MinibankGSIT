@@ -1,0 +1,81 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{index}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINI Bank GSIT</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<strong>Form Tambah Setoran Nasabah</strong>
+							</div>
+							<div class="card-body card-block">
+								<form method="post" th:action="@{setor}" th:object="${transaksi}" class="form-horizontal">
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label class=" form-control-label"><b>No Rekening</b> </label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="norekening" name="norekening" th:field="*{idTabungan}" class="form-control" required>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label"><b>Nominal</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="nominal" name="nominal" th:field="*{saldoMasuk}" class="form-control" required>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label"><b>Tanggal Setor</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class=" form-control" th:text="${date}"></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>ID Transaksi Masuk</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class="form-control" th:text="${idmasuk}"></label>
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class=" form-control-label"><b>ID Histori</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<label class="form-control" th:text="${idhistori}"></label>
+										</div>
+									</div>
+									<input type="hidden" name="tanggalTransaksi" th:value="${date}" />
+									<input type="hidden" name="idTransaksiMasuk" th:value="${idmasuk}" />
+									<input type="hidden" name="idHistori" th:value="${idhistori}" />
+									<input type="submit" class="btn btn-success" value="Tambah" />
+									<td><a href="/transaksi/data/setor" class="btn btn-info" role="button">Kembali</a></td>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="clearfix"></div>
+
+</body>
+</html>

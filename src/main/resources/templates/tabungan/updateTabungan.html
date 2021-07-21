@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{index}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINI Bank GSIT</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<strong>Form Ubah Tabungan</strong>
+							</div>
+							<div class="card-body card-block">
+								<form method="post" action="" th:object="${tabungan}" class="form-horizontal">
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label class="form-control-label"><b>ID Tabungan</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="idtabungan" name="idtabungan" th:field="*{idTabungan}" class="form-control" disabled="disabled">
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label"><b>New Pin</b></label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="password" id="newpin" name="newpin" th:field="*{pin}" maxlength="6" required>
+										</div>
+									</div>
+				
+									<input type="hidden" th:field="*{idTabungan}" />
+									<input type="submit" class="btn btn-success" value="Ubah" />
+									<td><a href="/tabungan" class="btn btn-info" role="button">Kembali</a></td>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+</body>
+</html>

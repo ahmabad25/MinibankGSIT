@@ -1,0 +1,159 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{index}">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible">
+<title>MINI BANK</title>
+</head>
+<body>
+
+<div layout:fragment="breadcrumbs">
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h1><b>Selamat Datang, <span th:text="${pegawai.firstName}+' '+${pegawai.lastName}"></span></b></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       	 </div>			
+    </div>
+   </div>
+        
+	<div layout:fragment="content">
+		<div class="content">
+			<!-- Animated -->
+			<div class="animated fadeIn">
+				<!-- Widgets  -->
+				<div class="row">
+					<div class=".col col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<div class="stat-widget-five">
+									<div class="stat-icon dib flat-color-1">
+										<div>
+											<a href="/tabungan"><img src="/images/icon/rp.png"
+												width="50" height="50"></a>
+										</div>
+									</div>
+									<div class="stat-content">
+										<div class="text-left dib">
+											<div class="stat-text">
+												<span  th:text="'IDR. '+${#numbers.formatDecimal(totalSaldo, 0, 'COMMA', 0, 'COMMA')}"></span>
+											</div>
+											<div class="stat-heading">Akumulasi Saldo Tersimpan</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class=".col col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<div class="stat-widget-five">
+									<div class="stat-icon dib flat-color-2">
+										<div>
+											<a href="/transaksimasuk"><img
+												src="/images/icon/transfer.png" width="60" height="60"></a>
+										</div>
+									</div>
+									<div class="stat-content">
+										<div class="text-left dib">
+											<div class="stat-text">
+												<span class="count" th:text="${totalTransaksi}"></span><span> Transaksi</span>
+											</div>
+											<div class="stat-heading">Akumulasi Transaksi Nasabah</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class=".col col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<div class="stat-widget-five">
+									<div class="stat-icon dib flat-color-3">
+										<div>
+											<a href="/pegawai"><img src="/images/icon/pegawai.jpg" width="60" height="60"></a>
+										</div>
+									</div>
+									<div class="stat-content">
+										<div class="text-left dib">
+											<div class="stat-text">
+												<span class="count" th:text="${totalPegawai}"></span><span> Orang</span>
+											</div>
+											<div class="stat-heading">Total Pegawai</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class=".col col-md-6">
+						<div class="card">
+							<div class="card-body">
+								<div class="stat-widget-five">
+									<div class="stat-icon dib flat-color-4">
+										<div>
+											<a href="/nasabah"><img src="/images/icon/klien.png" title="Nasabah" width="60" height="60"></a>
+										</div>
+									</div>
+									<div class="stat-content">
+										<div class="text-left dib">
+											<div class="stat-text">
+												<span class="count" th:text="${totalNasabah}"></span><span> Orang</span>
+											</div>
+											<div class="stat-heading">Total Nasabah</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-ex-12">
+					<div class="card">
+						<div class="card-header">
+							<div id="carousel-slider" class="carousel slide"
+								data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active">
+										<img src="/images/GSITBanner.png" height='455px' alt="">
+									</div>
+									<div class="item">
+										<img src="/images/banner1.jpg" alt="">
+									</div>
+									<div class="item">
+										<img src="/images/banner2.jpg" alt="">
+									</div>
+									<div class="item">
+										<img src="/images/banner3.jpg" alt="">
+									</div>
+								</div>
+								<!--INDICATORS-->
+								<ol class="carousel-indicators">
+									<li data-target="#carousel-slider" data-slide-to="0"
+										class="active"></li>
+									<li data-target="#carousel-slider" data-slide-to="1"></li>
+									<li data-target="#carousel-slider" data-slide-to="2"></li>
+									<li data-target="#carousel-slider" data-slide-to="3"></li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

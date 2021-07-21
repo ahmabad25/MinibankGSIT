@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{index}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINI Bank GSIT</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<strong>Form Ubah Nasabah Mobile Banking</strong>
+							</div>
+							<div class="card-body card-block">
+								<form method="post" th:action="@{${idKlien}}" th:object="${klnSelected}" class="form-horizontal">
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label class="form-control-label">ID Klien</label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="idklien" name="idklien" th:field="*{idKlien}" class="form-control" disabled="disabled">
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label">Username</label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="username" name="username" th:field="*{username}" class="form-control" maxlength="8">
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label"> Password</label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="password" id="password" name="password" th:field="*{password}" class="form-control" maxlength="6">
+										</div>
+									</div>
+									<div class="row form-group">
+										<div class="col col-md-2">
+											<label for="text-input" class="form-control-label">Id Tabungan</label>
+										</div>
+										<div class="col-12 col-md-9">
+											<input type="text" id="idtabungan" name="idtabungan" th:field="*{idTabungan}" class="form-control" disabled="disabled">
+										</div>
+									</div>
+									<input type="hidden" name="idKlien" th:value="${newId}" />
+									<input type="submit" class="btn btn-success" value="Ubah" />
+									<td><a href="/klien" class="btn btn-info" role="button">Kembali</a></td>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</body>
+</html>

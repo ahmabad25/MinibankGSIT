@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{index}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>MINI Bank GSIT</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Data Nasabah</strong>
+							</div>
+							<div class="card-body">
+								<table id="bootstrap-data-table" class="table table-striped table-bordered" th:object="${nasabah}">
+									<tr>
+										<th>ID Nasabah</th>
+										<td th:text="*{idNasabah}"></td>
+									</tr>
+									<tr>
+										<th>Nama Depan</th>
+										<td th:text="*{firstName}"></td>
+									</tr>
+									<tr>
+										<th>Nama Belakang</th>
+										<td th:text="*{lastName}"></td>
+									</tr>
+									<tr>
+										<th>Jenis Kelamin</th>
+										<span th:switch="*{jenisKelamin}">
+											<td th:case="'L'">Laki-laki</td>
+											<td th:case="'P'">Perempuan</td>
+										</span>
+									</tr>
+									<tr>
+										<th>Tempat Lahir</th>
+										<td th:text="*{tempatLahir}"></td>
+									</tr>
+									<tr>
+										<th>Tanggal Lahir
+										</td>
+										<td th:text="*{tanggalLahir}"></td>
+									</tr>
+									<tr>
+										<th>Agama</th>
+										<td th:text="*{agama}"></td>
+									</tr>
+									<tr>
+										<th>Alamat Lengkap</th>
+										<td th:text="*{alamat}"></td>
+									</tr>
+									<tr>
+										<th>No. Telepon</th>
+										<td th:text="*{noTelepon}"></td>
+									</tr>
+									<tr>
+										<th>Nama Ibu Kandung</th>
+										<td th:text="*{namaIbu}"></td>
+									</tr>
+									<tr>
+										<th>NIK</th>
+										<td th:text="*{NIK}"></td>
+									</tr>
+									<tr>
+										<th>NPWP</th>
+										<td th:text="*{npwp}"></td>
+									</tr>
+									<tr>
+										<th>Pekerjaan</th>
+										<td th:text="*{pekerjaan}"></td>
+									</tr>
+									<tr>
+										<td colspan="2"><a th:href="@{../nasabah}">
+										<button type="button" class="btn btn-info">Kembali</button></a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+</body>
+</html>
